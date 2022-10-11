@@ -15,17 +15,21 @@ from model_b import *
 
 
 if __name__ == '__main__':
+
     parser = argparse.ArgumentParser()
-    parser.add_argument('--base_dir',
+
+    parser.add_argument('--filename',
                         type=str,
                         default='.',
-                        required=False,
-                        help='specify a folder with data')
+                        required=True,
+                        help='specify a data file')
+
     parser.add_argument('--width',
                         type=float,
                         required=False,
                         default=0.2,
                         help='the width of the time slice (sec.) to convert events to image')
+
     parser.add_argument('--mode',
                         type=int,
                         required=False,
@@ -37,7 +41,9 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    print ("Opening", args.base_dir)
+    print ("Opening " + args.filename)
+
+    exit(0)
 
     QY_mapper = ClassMapper(0.0005, 0.0005)
     QYModel = Model_a(QY_mapper)
@@ -50,6 +56,7 @@ if __name__ == '__main__':
 
 
     sl_npz = np.load(args.base_dir + '/recording.npz')
+
     cloud          = sl_npz['events']
     idx            = sl_npz['index']
     discretization = sl_npz['discretization']
