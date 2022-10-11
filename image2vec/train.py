@@ -18,7 +18,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('filename', type=str, help='data file')
+    parser.add_argument('filename', type=str, help='NPZ data file')
 
     parser.add_argument('--width',
                         type=float,
