@@ -18,11 +18,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--filename',
-                        type=str,
-                        default='.',
-                        required=True,
-                        help='specify a data file')
+    parser.add_argument('filename', type=str, help='data file')
 
     parser.add_argument('--width',
                         type=float,
@@ -43,8 +39,6 @@ if __name__ == '__main__':
 
     print ("Opening " + args.filename)
 
-    exit(0)
-
     QY_mapper = ClassMapper(0.0005, 0.0005)
     QYModel = Model_a(QY_mapper)
 
@@ -55,7 +49,7 @@ if __name__ == '__main__':
     TZModel = Model_a(TZ_mapper)
 
 
-    sl_npz = np.load(args.base_dir + '/recording.npz')
+    sl_npz = np.load(args.filename)
 
     cloud          = sl_npz['events']
     idx            = sl_npz['index']
